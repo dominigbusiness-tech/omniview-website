@@ -15,14 +15,15 @@ export const metadata: Metadata = {
   },
   description:
     'OmniView connects digital presence, intelligent automation and growth services under one technology-driven brand.',
-  generator: 'v0.app',
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      {
+        url: '/omniview-isotype.png',
+        type: 'image/png',
+      },
     ],
-    apple: '/apple-icon.png',
+    shortcut: '/omniview-isotype.png',
+    apple: '/omniview-isotype.png',
   },
 }
 
@@ -40,12 +41,16 @@ export default async function RootLayout({
   const lang = headerList.get(LOCALE_HEADER) === 'es' ? 'es' : 'en'
 
   return (
-    <html lang={lang} className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang={lang}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="antialiased">
         <DrawerProvider>
           {children}
           <ProjectDrawer lang={lang} />
         </DrawerProvider>
+
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
